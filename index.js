@@ -87,6 +87,20 @@ let finances = [
   ["Feb-2017", 671099],
 ];
 
-/** The total number of months included in the dataset. */
+/** 1) The total number of months included in the dataset. */
 let totalMonths = finances.length;
 console.log(`Total Months: ${totalMonths}`);
+
+/** 2) The net total amount of Profit/Losses over the entire period. */
+let total = [];
+for (let i = 0; i < finances.length; i++) {
+  const month = finances[i];
+  console.log(month);
+  for (let j = 0; j < month.length; j++) {
+    const money = month[1];
+    console.log(money);
+    total.push(money);
+  }
+}
+
+console.log(total);
