@@ -92,15 +92,20 @@ let totalMonths = finances.length;
 console.log(`Total Months: ${totalMonths}`);
 
 /** 2) The net total amount of Profit/Losses over the entire period. */
-let total = [];
+let profitArr = [];
+let total = 0;
 for (let i = 0; i < finances.length; i++) {
   const month = finances[i];
-  console.log(month);
+  // console.log(month);
   for (let j = 0; j < month.length; j++) {
     const money = month[1];
-    console.log(money);
-    total.push(money);
+    // console.log(money);
+    profitArr.push(money);
+    // console.log(profitArr);
+    total += profitArr[i];
   }
 }
 
-console.log(total);
+/**Sum can also be achieved using the reduce array method */
+// let total = profitArr.reduce((a, b) => a + b, 0);
+console.log(`Total: $${total}`);
