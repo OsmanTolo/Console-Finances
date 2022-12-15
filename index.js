@@ -95,15 +95,9 @@ console.log(`Total Months: ${totalMonths}`);
 let profitArr = [];
 let total = 0;
 for (let i = 0; i < finances.length; i++) {
-  const month = finances[i];
-  // console.log(month);
-  for (let j = 0; j < month.length; j++) {
-    const money = month[1];
-    // console.log(money);
-    profitArr.push(money);
-    // console.log(profitArr);
-    total += profitArr[i];
-  }
+  const [date, amount] = finances[i];
+  profitArr.push(amount);
+  total += profitArr[i];
 }
 
 /**Sum can also be achieved using the reduce array method */
