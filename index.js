@@ -120,3 +120,17 @@ console.log(maxAmount);
 /** 5) Gretest decrease in losses over the entire period */
 // console.log(datesArr);
 // console.log(amountArr);
+
+for (let i = 1; i < finances.length; i++) {
+  let difference = finances[i][1] - finances[i - 1][1];
+  let maxProfit = finances[i][1];
+  let maxLoss = finances[i][1];
+
+  if (max < difference) {
+    maxProfit = difference;
+    console.log(`The max profit is ${maxProfit}`);
+  } else if (maxLoss > difference) {
+    maxLoss = difference;
+    console.log(`The max loss is ${maxLoss}`);
+  }
+}
