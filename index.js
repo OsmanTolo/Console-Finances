@@ -110,10 +110,13 @@ let change = 0;
 for (let i = 1; i < finances.length; i++) {
   change += finances[i][1] - finances[i - 1][1];
 }
-console.log(`Average change: ${change / 85}`);
+let averageChange = (change / 85).toFixed(2);
+console.log(`Average change: ${averageChange}`);
 
 /** 4) Gretest increase in profits over the entire period */
 // console.log(amountArr);
 let maxAmount = Math.max(...amountArr);
 console.log(maxAmount);
 /** 5) Gretest decrease in losses over the entire period */
+// console.log(datesArr);
+// console.log(amountArr);
