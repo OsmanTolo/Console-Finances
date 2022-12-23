@@ -87,22 +87,23 @@ let finances = [
   ["Feb-2017", 671099],
 ];
 
-/** 1) The total number of months included in the dataset. */
+/** 1) The total number of months included in the dataset.
+ * Use the length array method.
+ */
 let totalMonths = finances.length;
 console.log(`Total Months: ${totalMonths}`);
 
 /** 2) The net total amount of Profit/Losses over the entire period. */
 let amountArr = [];
-let netTotal = 0;
 let datesArr = [];
 for (let i = 0; i < finances.length; i++) {
   const [date, amount] = finances[i];
+  // Store the amount and months in separate arrays
   amountArr.push(amount);
   datesArr.push(date);
-  netTotal += amountArr[i];
 }
-/**Sum can also be achieved using the reduce array method */
-// let netTotal = profitArr.reduce((a, b) => a + b, 0);
+// Use the reduce array method to calculate the sum of the amounts arr
+let netTotal = amountArr.reduce((a, b) => a + b, 0);
 console.log(`Total: $${netTotal}`);
 
 /** 3) Month to month profit/loss average change */
@@ -111,12 +112,12 @@ for (let i = 1; i < finances.length; i++) {
   change += finances[i][1] - finances[i - 1][1];
 }
 let averageChange = (change / 85).toFixed(2);
-console.log(`Average change: ${averageChange}`);
+console.log(`Average change: $${averageChange}`);
 
 /** 4) Gretest increase in profits over the entire period */
 // console.log(amountArr);
 let maxAmount = Math.max(...amountArr);
-console.log(maxAmount);
+console.log(`The max amount: $${maxAmount}`);
 /** 5) Gretest decrease in losses over the entire period */
 // console.log(datesArr);
 // console.log(amountArr);
