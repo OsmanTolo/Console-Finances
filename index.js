@@ -131,17 +131,18 @@ for (let i = 1; i < finances.length; i++) {
   if (difference > greatestProfit) {
     greatestProfit[0] = finances[i][0];
     greatestProfit[1] = changeArr[i - 1];
+    console.log(
+      `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
+    );
   } else if (difference < greatestLoss) {
     greatestLoss[0] = finances[i][0];
     greatestLoss[1] = changeArr[i - 1];
+    console.log(
+      `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
+    );
   }
 }
-console.log(
-  `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
-);
-console.log(
-  `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
-);
+
 /*
 for (let i = 1; i < finances.length; i++) {
   let difference = finances[i][1] - finances[i - 1][1];
