@@ -119,7 +119,10 @@ console.log(`Average change: $${averageChange}`);
 /** 4) Gretest increase in profits over the entire period */
 /** 4) Gretest increase in profits over the entire period */
 let changeArr = [];
+// Empty array varibales to store the greatest amount change
 let greatestProfit = [];
+let biggestProfit = 0;
+let smallestProfit = 0;
 let greatestLoss = [];
 for (let i = 1; i < finances.length; i++) {
   // Subtract the data at position [1] of the previous element from the data at position [1] of the current element
@@ -128,21 +131,28 @@ for (let i = 1; i < finances.length; i++) {
   changeArr.push(difference);
 
   // Conditional to check the difference
-  if (difference > greatestProfit) {
-    greatestProfit[0] = finances[i][0];
-    greatestProfit[1] = changeArr[i - 1];
-    console.log(
-      `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
-    );
-  } else if (difference < greatestLoss) {
-    greatestLoss[0] = finances[i][0];
-    greatestLoss[1] = changeArr[i - 1];
-    console.log(
-      `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
-    );
+  if (difference > biggestProfit) {
+    biggestProfit = difference;
+  } else if (difference < smallestProfit) {
+    smallestProfit = difference;
   }
+  // if (difference > greatestProfit) {
+  //   greatestProfit[0] = finances[i][0];
+  //   greatestProfit[1] = changeArr[i - 1];
+  // } else if (difference < greatestLoss) {
+  //   greatestLoss[0] = finances[i][0];
+  //   greatestLoss[1] = changeArr[i - 1];
+  // }
 }
 
+console.log(`Biggest Profit: ${biggestProfit}`);
+console.log(`Smallest Profit: ${smallestProfit}`);
+// console.log(
+//   `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
+// );
+// console.log(
+//   `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
+// );
 /*
 for (let i = 1; i < finances.length; i++) {
   let difference = finances[i][1] - finances[i - 1][1];
