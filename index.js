@@ -136,6 +136,7 @@ for (let i = 1; i < finances.length; i++) {
   } else if (difference < smallestProfit) {
     smallestProfit = difference;
   }
+
   // if (difference > greatestProfit) {
   //   greatestProfit[0] = finances[i][0];
   //   greatestProfit[1] = changeArr[i - 1];
@@ -145,8 +146,15 @@ for (let i = 1; i < finances.length; i++) {
   // }
 }
 
-console.log(`Biggest Profit: ${biggestProfit}`);
-console.log(`Smallest Profit: ${smallestProfit}`);
+// console.log(`Chnage arr: ${changeArr}`);
+// TODO: chnage hard coded dates
+console.log(
+  `Greatest Increase in Profits: ${finances[25][0]} ($${biggestProfit})`
+);
+console.log(
+  `Greatest Decrease in Profits:  ${finances[44][0]} ($${smallestProfit})`
+);
+
 // console.log(
 //   `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
 // );
