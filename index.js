@@ -90,7 +90,6 @@ let finances = [
 /** 1) The total number of months included in the dataset. */
 let totalMonths = finances.length;
 console.log(`Total Months: ${totalMonths}`);
-document.getElementById("totalMonths").innerHTML = totalMonths;
 
 /** 2) The net total amount of Profit/Losses over the entire period.
  * (a) Create empty arr vaiables to store the amount and dates separately
@@ -109,7 +108,6 @@ for (let i = 0; i < finances.length; i++) {
 }
 let netTotal = amountArr.reduce((a, b) => a + b, 0);
 console.log(`Total: $ ${netTotal}`);
-document.getElementById("total").innerHTML = `$ ${netTotal}`;
 
 /** 3) Month to month profit/loss average change */
 /** 4) Gretest increase in profits over the entire period */
@@ -134,7 +132,7 @@ for (let i = 1; i < finances.length; i++) {
   } else if (difference < smallestProfit) {
     smallestProfit = difference;
   }
-
+  /*
   // Alternative Solution
   let differences = finances[i][1] - finances[i - 1][1];
   if (differences > greatestProfit) {
@@ -144,28 +142,35 @@ for (let i = 1; i < finances.length; i++) {
     greatestLoss[0] = finances[i][0];
     greatestLoss[1] = changeArr[i - 1];
   }
+  */
 }
 
 /**The average month to month change to two decimal places */
 let change = changeArr.reduce((a, b) => a + b, 0);
 let averageChange = (change / (totalMonths - 1)).toFixed(2);
 console.log(`Average change: $ ${averageChange}`);
-document.getElementById("averageChange").innerHTML = `$ ${averageChange}`;
 
 // TODO: change hard coded dates
 console.log(
   `Greatest Increase in Profits: ${finances[25][0]} ($${biggestProfit})`
 );
-document.getElementById(
-  "greatestProfit"
-).innerHTML = `${finances[25][0]} ($ ${biggestProfit})`;
+
 console.log(
   `Greatest Decrease in Profits:  ${finances[44][0]} ($ ${smallestProfit})`
 );
+
+/**DOM Manipulation to display results on webpage*/
+document.getElementById("totalMonths").innerHTML = totalMonths;
+document.getElementById("total").innerHTML = `$ ${netTotal}`;
+document.getElementById("averageChange").innerHTML = `$ ${averageChange}`;
+document.getElementById(
+  "greatestProfit"
+).innerHTML = `${finances[25][0]} ($ ${biggestProfit})`;
 document.getElementById(
   "greatestLoss"
 ).innerHTML = `${finances[44][0]} ($ ${smallestProfit})`;
 
+/*
 console.log("******************** Alternative Solution *******************");
 console.log(
   `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
@@ -173,3 +178,4 @@ console.log(
 console.log(
   `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
 );
+*/
