@@ -86,10 +86,14 @@ let finances = [
   ["Jan-2017", 138230],
   ["Feb-2017", 671099],
 ];
+console.log(
+  "%cFinancial Analysis",
+  "text-decoration:underline; font-size:14px; font-weight:bold"
+);
 
 /** 1) The total number of months included in the dataset. */
 let totalMonths = finances.length;
-console.log(`Total Months: ${totalMonths}`);
+console.log(`%cTotal Months: ${totalMonths}`, "font-weight:bold");
 
 /** 2) The net total amount of Profit/Losses over the entire period.
  * (a) Create empty arr vaiables to store the amount and dates separately
@@ -107,14 +111,14 @@ for (let i = 0; i < finances.length; i++) {
   datesArr.push(date);
 }
 let netTotal = amountArr.reduce((a, b) => a + b, 0);
-console.log(`Total: $ ${netTotal}`);
+console.log(`%cTotal: $ ${netTotal}`, "font-weight:bold");
 
 /** 3) Month to month profit/loss average change */
 /** 4) Gretest increase in profits over the entire period */
 /** 5) Gretest decrease in profits over the entire period */
 let changeArr = [];
-let greatestProfit = [];
-let greatestLoss = [];
+// let greatestProfit = [];
+// let greatestLoss = [];
 let biggestProfit = 0;
 let smallestProfit = 0;
 let difference = 0;
@@ -148,15 +152,17 @@ for (let i = 1; i < finances.length; i++) {
 /**The average month to month change to two decimal places */
 let change = changeArr.reduce((a, b) => a + b, 0);
 let averageChange = (change / (totalMonths - 1)).toFixed(2);
-console.log(`Average change: $ ${averageChange}`);
+console.log(`%cAverage change: $ ${averageChange}`, "font-weight:bold");
 
 // TODO: change hard coded dates
 console.log(
-  `Greatest Increase in Profits: ${finances[25][0]} ($ ${biggestProfit})`
+  `%cGreatest Increase in Profits: ${finances[25][0]} ($ ${biggestProfit})`,
+  "font-weight:bold; color: green"
 );
 
 console.log(
-  `Greatest Decrease in Profits:  ${finances[44][0]} ($ ${smallestProfit})`
+  `%cGreatest Decrease in Profits:  ${finances[44][0]} ($ ${smallestProfit})`,
+  "font-weight:bold; color: red"
 );
 
 /**DOM Manipulation to display results on webpage*/
