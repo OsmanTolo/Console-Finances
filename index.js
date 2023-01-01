@@ -152,7 +152,7 @@ console.log(`Average change: $ ${averageChange}`);
 
 // TODO: change hard coded dates
 console.log(
-  `Greatest Increase in Profits: ${finances[25][0]} ($${biggestProfit})`
+  `Greatest Increase in Profits: ${finances[25][0]} ($ ${biggestProfit})`
 );
 
 console.log(
