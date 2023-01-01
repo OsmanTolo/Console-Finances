@@ -87,44 +87,43 @@ let finances = [
   ["Feb-2017", 671099],
 ];
 
-/** 1) The total number of months included in the dataset.
- * Use the length array method.
- */
+/** 1) The total number of months included in the dataset. */
 let totalMonths = finances.length;
 console.log(`Total Months: ${totalMonths}`);
 
-/** 2) The net total amount of Profit/Losses over the entire period. */
+/** 2) The net total amount of Profit/Losses over the entire period.
+ * (a) Create empty arr vaiables to store the amount and dates separately
+ * (b) Use for loop to ietrate through the finance arr
+ *    i. use destructuring assignment to store date and amount from the
+ *        finance arr into their respective variables.
+ *    ii. push date and amount to their empty arr variable in 2a.
+ * (c) Use reduce method to find the sum of the amounts arr
+ */
 let amountArr = [];
 let datesArr = [];
 for (let i = 0; i < finances.length; i++) {
   const [date, amount] = finances[i];
-  // Store the amount and months in separate arrays
   amountArr.push(amount);
   datesArr.push(date);
 }
-// Use the reduce array method to calculate the sum of the amounts arr
 let netTotal = amountArr.reduce((a, b) => a + b, 0);
 console.log(`Total: $${netTotal}`);
 
 /** 3) Month to month profit/loss average change */
-let change = 0;
+/** 4) Gretest increase in profits over the entire period */
+/** 5) Gretest decrease in profits over the entire period */
 let changeArr = [];
-// Empty array varibales to store the greatest amount change
 let greatestProfit = [];
 let greatestLoss = [];
 let biggestProfit = 0;
 let smallestProfit = 0;
 let difference = 0;
 for (let i = 1; i < finances.length; i++) {
-  // Track total change in profits month to month
-  change += finances[i][1] - finances[i - 1][1];
-
-  /** 4) Gretest increase in profits over the entire period */
-  /** 5) Gretest decrease in profits over the entire period */
-  // Subtract the data at position [1] of the previous element from the data at position [1] of the current element
+  /**Track total change in profits month to month by:
+   * Subtracting the data at position [1] of the previous element from the
+   *  data at position [1] of the current element
+   */
   difference = finances[i][1] - finances[i - 1][1];
-  // console.log(difference);
-  // Push the difference to changeArr
   changeArr.push(difference);
 
   // Conditional to check the difference
@@ -134,7 +133,9 @@ for (let i = 1; i < finances.length; i++) {
     smallestProfit = difference;
   }
 }
-// The average month to month change to two decimal places
+
+/**The average month to month change to two decimal places */
+let change = changeArr.reduce((a, b) => a + b, 0);
 let averageChange = (change / (totalMonths - 1)).toFixed(2);
 console.log(`Average change: $${averageChange}`);
 
