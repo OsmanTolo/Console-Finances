@@ -120,7 +120,7 @@ let smallestProfit = 0;
 let difference = 0;
 for (let i = 1; i < finances.length; i++) {
   /**Track total change in profits month to month by:
-   * Subtracting the data at position [1] of the previous element from the
+   *  Subtracting the data at position [1] of the previous element from the
    *  data at position [1] of the current element
    */
   difference = finances[i][1] - finances[i - 1][1];
@@ -131,6 +131,16 @@ for (let i = 1; i < finances.length; i++) {
     biggestProfit = difference;
   } else if (difference < smallestProfit) {
     smallestProfit = difference;
+  }
+
+  // Alternative Solution
+  let differences = finances[i][1] - finances[i - 1][1];
+  if (differences > greatestProfit) {
+    greatestProfit[0] = finances[i][0];
+    greatestProfit[1] = changeArr[i - 1];
+  } else if (differences < greatestLoss) {
+    greatestLoss[0] = finances[i][0];
+    greatestLoss[1] = changeArr[i - 1];
   }
 }
 
@@ -147,21 +157,10 @@ console.log(
   `Greatest Decrease in Profits:  ${finances[44][0]} ($${smallestProfit})`
 );
 
-/** 4) Gretest increase in profits over the entire period */
-/** 5) Gretest decrease in profits over the entire period */
-// for (let i = 1; i < finances.length; i++) {
-// if (difference > greatestProfit) {
-//   greatestProfit[0] = finances[i][0];
-//   greatestProfit[1] = changeArr[i - 1];
-// } else if (difference < greatestLoss) {
-//   greatestLoss[0] = finances[i][0];
-//   greatestLoss[1] = changeArr[i - 1];
-// }
-// }
-
-// console.log(
-//   `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
-// );
-// console.log(
-//   `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
-// );
+console.log("******************** Alternative Solution *******************");
+console.log(
+  `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
+);
+console.log(
+  `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
+);
