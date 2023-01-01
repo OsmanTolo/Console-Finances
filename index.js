@@ -108,26 +108,23 @@ console.log(`Total: $${netTotal}`);
 
 /** 3) Month to month profit/loss average change */
 let change = 0;
-for (let i = 1; i < finances.length; i++) {
-  // Track total change in profits month to month
-  change += finances[i][1] - finances[i - 1][1];
-}
-// The average month to month change to two decimal places
-let averageChange = (change / (totalMonths - 1)).toFixed(2);
-console.log(`Average change: $${averageChange}`);
-
-/** 4) Gretest increase in profits over the entire period */
-/** 4) Gretest increase in profits over the entire period */
 let changeArr = [];
 // Empty array varibales to store the greatest amount change
 let greatestProfit = [];
+let greatestLoss = [];
 let biggestProfit = 0;
 let smallestProfit = 0;
-let greatestLoss = [];
+let difference = 0;
 for (let i = 1; i < finances.length; i++) {
+  // Track total change in profits month to month
+  change += finances[i][1] - finances[i - 1][1];
+
+  /** 4) Gretest increase in profits over the entire period */
+  /** 5) Gretest decrease in profits over the entire period */
   // Subtract the data at position [1] of the previous element from the data at position [1] of the current element
-  let difference = finances[i][1] - finances[i - 1][1];
-  // Push the difference to new
+  difference = finances[i][1] - finances[i - 1][1];
+  // console.log(difference);
+  // Push the difference to changeArr
   changeArr.push(difference);
 
   // Conditional to check the difference
@@ -136,18 +133,12 @@ for (let i = 1; i < finances.length; i++) {
   } else if (difference < smallestProfit) {
     smallestProfit = difference;
   }
-
-  // if (difference > greatestProfit) {
-  //   greatestProfit[0] = finances[i][0];
-  //   greatestProfit[1] = changeArr[i - 1];
-  // } else if (difference < greatestLoss) {
-  //   greatestLoss[0] = finances[i][0];
-  //   greatestLoss[1] = changeArr[i - 1];
-  // }
 }
+// The average month to month change to two decimal places
+let averageChange = (change / (totalMonths - 1)).toFixed(2);
+console.log(`Average change: $${averageChange}`);
 
-// console.log(`Chnage arr: ${changeArr}`);
-// TODO: chnage hard coded dates
+// TODO: change hard coded dates
 console.log(
   `Greatest Increase in Profits: ${finances[25][0]} ($${biggestProfit})`
 );
@@ -155,34 +146,21 @@ console.log(
   `Greatest Decrease in Profits:  ${finances[44][0]} ($${smallestProfit})`
 );
 
+/** 4) Gretest increase in profits over the entire period */
+/** 5) Gretest decrease in profits over the entire period */
+// for (let i = 1; i < finances.length; i++) {
+// if (difference > greatestProfit) {
+//   greatestProfit[0] = finances[i][0];
+//   greatestProfit[1] = changeArr[i - 1];
+// } else if (difference < greatestLoss) {
+//   greatestLoss[0] = finances[i][0];
+//   greatestLoss[1] = changeArr[i - 1];
+// }
+// }
+
 // console.log(
 //   `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
 // );
 // console.log(
 //   `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
 // );
-/*
-for (let i = 1; i < finances.length; i++) {
-  let difference = finances[i][1] - finances[i - 1][1];
-  let maxProfit = finances[i][1];
-  let maxLoss = finances[i][1];
-
-  if (max < difference) {
-    maxProfit = difference;
-    console.log(`The max profit is ${maxProfit}`);
-  } else if (maxLoss > difference) {
-    maxLoss = difference;
-    console.log(`The max loss is ${maxLoss}`);
-  }
-}
-*/
-
-/** 5) Gretest decrease in losses over the entire period */
-
-/** 4) Gretest increase in profits over the entire period */
-// console.log(amountArr);
-// let maxAmount = Math.max(...amountArr);
-// console.log(`The max amount: $${maxAmount}`);
-/** 5) Gretest decrease in losses over the entire period */
-// console.log(datesArr);
-// console.log(amountArr);
