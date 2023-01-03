@@ -96,8 +96,8 @@ let totalMonths = finances.length;
 console.log(`%cTotal Months: ${totalMonths}`, "font-weight:bold");
 
 /** 2) The net total amount of Profit/Losses over the entire period.
- * (a) Create empty arr vaiables to store the amount and dates separately
- * (b) Use for loop to ietrate through the finance arr
+ * (a) Create empty arr variables to store the amount and dates separately
+ * (b) Use for loop to iterate through the finance arr
  *    i. use destructuring assignment to store date and amount from the
  *        finance arr into their respective variables.
  *    ii. push date and amount to their empty arr variable in 2a.
@@ -118,8 +118,6 @@ console.log(`%cTotal: $ ${netTotal}`, "font-weight:bold");
 /** 4) Greatest increase in profits over the entire period */
 /** 5) Greatest decrease in profits over the entire period */
 let changeArr = [];
-// let greatestProfit = [];
-// let greatestLoss = [];
 let biggestProfit = 0;
 let biggestProfitDate = "";
 let smallestProfit = 0;
