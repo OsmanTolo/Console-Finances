@@ -105,6 +105,7 @@ console.log(`%cTotal Months: ${totalMonths}`, "font-weight:bold");
  */
 let amountArr = [];
 let datesArr = [];
+let sum = 0;
 for (let i = 0; i < finances.length; i++) {
   const [date, amount] = finances[i];
   amountArr.push(amount);
@@ -114,13 +115,15 @@ let netTotal = amountArr.reduce((a, b) => a + b, 0);
 console.log(`%cTotal: $ ${netTotal}`, "font-weight:bold");
 
 /** 3) Month to month profit/loss average change */
-/** 4) Gretest increase in profits over the entire period */
-/** 5) Gretest decrease in profits over the entire period */
+/** 4) Greatest increase in profits over the entire period */
+/** 5) Greatest decrease in profits over the entire period */
 let changeArr = [];
 // let greatestProfit = [];
 // let greatestLoss = [];
 let biggestProfit = 0;
+let biggestProfitDate = "";
 let smallestProfit = 0;
+let smallestProfitDate = "";
 let difference = 0;
 for (let i = 1; i < finances.length; i++) {
   /**Track total change in profits month to month by:
@@ -133,20 +136,11 @@ for (let i = 1; i < finances.length; i++) {
   // Conditional to check the difference
   if (difference > biggestProfit) {
     biggestProfit = difference;
+    biggestProfitDate = finances[i][0];
   } else if (difference < smallestProfit) {
     smallestProfit = difference;
+    smallestProfitDate = finances[i][0];
   }
-  /*
-  // Alternative Solution
-  let differences = finances[i][1] - finances[i - 1][1];
-  if (differences > greatestProfit) {
-    greatestProfit[0] = finances[i][0];
-    greatestProfit[1] = changeArr[i - 1];
-  } else if (differences < greatestLoss) {
-    greatestLoss[0] = finances[i][0];
-    greatestLoss[1] = changeArr[i - 1];
-  }
-  */
 }
 
 /**The average month to month change to two decimal places */
@@ -156,12 +150,12 @@ console.log(`%cAverage change: $ ${averageChange}`, "font-weight:bold");
 
 // TODO: change hard coded dates
 console.log(
-  `%cGreatest Increase in Profits: ${finances[25][0]} ($ ${biggestProfit})`,
+  `%cGreatest Increase in Profits: ${biggestProfitDate} ($ ${biggestProfit})`,
   "font-weight:bold; color: green"
 );
 
 console.log(
-  `%cGreatest Decrease in Profits:  ${finances[44][0]} ($ ${smallestProfit})`,
+  `%cGreatest Decrease in Profits:  ${smallestProfitDate} ($ ${smallestProfit})`,
   "font-weight:bold; color: red"
 );
 
@@ -175,13 +169,3 @@ document.getElementById(
 document.getElementById(
   "greatestLoss"
 ).innerHTML = `${finances[44][0]} ($ ${smallestProfit})`;
-
-/*
-console.log("******************** Alternative Solution *******************");
-console.log(
-  `Greatest Increase in Profits: ${greatestProfit[0]} ($${greatestProfit[1]})`
-);
-console.log(
-  `Greatest Decrease in Profits: ${greatestLoss[0]} ($${greatestLoss[1]})`
-);
-*/
